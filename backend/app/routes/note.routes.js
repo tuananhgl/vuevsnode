@@ -1,5 +1,6 @@
 module.exports = (app) => {
     const notes = require('../controllers/note.controller.js');
+    const users = require('../controllers/user.controller.js')
 
     //Create a new Note
     app.post('/notes', notes.create);
@@ -16,6 +17,10 @@ module.exports = (app) => {
     // Delete a Note with noteId
     app.delete('/notes/:noteId', notes.delete);
 
-    //testing export data
-    app.post('/data', notes.createData)
+    // Create a User 
+    app.post('/user', users.create);
+
+    //Find an user from databbase
+    app.get('/user/:username/:password', users.findUser);
+
 }
